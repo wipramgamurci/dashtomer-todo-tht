@@ -4,6 +4,7 @@ import InputText from 'primevue/inputtext'
 import Checkbox from 'primevue/checkbox'
 import Dialog from 'primevue/dialog'
 import { ref } from 'vue'
+import StoreTest from './components/StoreTest.vue'
 
 const visible = ref(false)
 const checked = ref(false)
@@ -13,6 +14,9 @@ const text = ref('')
 <template>
   <div class="container mx-auto max-w-2xl px-8 py-8">
     <h1 class="text-2xl font-bold mb-6">PrimeVue Components Test</h1>
+    
+    <!-- Store Test Component -->
+    <StoreTest class="mb-8" />
     
     <div class="bg-white rounded-lg shadow-md p-8">
       <div class="space-y-6">
