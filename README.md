@@ -1,5 +1,47 @@
-# Vue 3 + TypeScript + Vite
+# Todo App - Take-Home Test
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A mobile-first todo application built with Vue 3, PrimeVue, and TypeScript.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm (v7 or higher)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd dashtomer-todo-tht
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Build for production:
+```bash
+npm run build
+```
+
+## 📱 Features
+
+- Add, edit, and delete tasks
+- Mark tasks as complete/incomplete
+- Mobile-first responsive design
+- Local storage persistence
+- Keyboard navigation support
+
+## 🛠️ Tech Stack
+
+- Vue 3 (Composition API + TypeScript)
+- PrimeVue for UI components
+- Pinia for state management
+- Tailwind CSS for styling
