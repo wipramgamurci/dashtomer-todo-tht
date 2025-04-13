@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTaskStore } from '../stores/taskStore'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
 import Checkbox from 'primevue/checkbox'
@@ -12,6 +12,11 @@ const { tasks } = storeToRefs(taskStore)
 const newTaskTitle = ref('')
 const editingTaskId = ref('')
 const editingTaskTitle = ref('')
+
+// Load tasks from localStorage when component mounts
+onMounted(() => {
+  taskStore.loadFromLocalStorage()
+})
 
 const handleAddTask = () => {
   taskStore.addTask(newTaskTitle.value)
@@ -35,6 +40,11 @@ const handleDeleteTask = (id: string) => {
 
 const handleToggleTask = (id: string) => {
   taskStore.toggleTask(id)
+}
+
+const clearLocalStorage = () => {
+  localStorage.removeItem('todo-tasks')
+  taskStore.$reset() // This will reset the store state
 }
 </script>
 
@@ -73,6 +83,14 @@ const handleToggleTask = (id: string) => {
             <Button icon="pi pi-trash" class="p-button-text" @click="() => handleDeleteTask(task.id)" />
           </template>
         </div>
+      </div>
+    </div>
+
+    <!-- LocalStorage Controls -->
+    <div class="mt-4">
+      <h3 class="font-medium mb-2">LocalStorage Controls:</h3>
+      <div class="flex gap-2">
+        <Button label="Clear LocalStorage" severity="danger" @click="clearLocalStorage" />
       </div>
     </div>
 
