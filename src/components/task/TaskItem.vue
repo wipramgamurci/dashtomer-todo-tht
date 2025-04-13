@@ -55,8 +55,8 @@ import { ref } from 'vue'
 import { useTaskStore } from '@/stores/taskStore'
 import Checkbox from 'primevue/checkbox'
 import Button from 'primevue/button'
-import DeleteDialog from './DeleteDialog.vue'
-import EditDialog from './EditDialog.vue'
+import DeleteDialog from '../dialog/DeleteDialog.vue'
+import EditDialog from '../dialog/EditDialog.vue'
 
 const props = defineProps<{
   task: {
