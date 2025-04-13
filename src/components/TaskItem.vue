@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue'
+import { ref } from 'vue'
 import { useTaskStore } from '@/stores/taskStore'
 import Checkbox from 'primevue/checkbox'
 import Button from 'primevue/button'
