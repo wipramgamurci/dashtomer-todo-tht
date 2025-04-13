@@ -24,13 +24,13 @@
       <Button
         icon="pi pi-pencil"
         class="p-button-text p-button-rounded min-w-[48px] min-h-[48px] p-3"
-        @click="editDialogRef?.open()"
+        @click="openEditDialog"
         aria-label="Edit task"
       />
       <Button
         icon="pi pi-trash"
         class="p-button-text p-button-rounded min-w-[48px] min-h-[48px] p-3"
-        @click="deleteDialogRef?.open()"
+        @click="openDeleteDialog"
         aria-label="Delete task"
       />
     </div>
@@ -55,8 +55,8 @@ import { ref } from 'vue'
 import { useTaskStore } from '@/stores/taskStore'
 import Checkbox from 'primevue/checkbox'
 import Button from 'primevue/button'
-import DeleteDialog from './DeleteDialog.vue'
-import EditDialog from './EditDialog.vue'
+import DeleteDialog from '../dialog/DeleteDialog.vue'
+import EditDialog from '../dialog/EditDialog.vue'
 
 const props = defineProps<{
   task: {
@@ -82,10 +82,17 @@ const handleEdit = (taskId: string, newTitle: string) => {
 const handleDelete = (taskId: string) => {
   taskStore.deleteTask(taskId)
 }
+
+const openEditDialog = () => {
+  editDialogRef.value?.open()
+}
+
+const openDeleteDialog = () => {
+  deleteDialogRef.value?.open()
+}
 </script>
 
 <style scoped>
-/* Only keeping styles that can't be done with Tailwind */
 @media (min-width: 768px) {
   .task-item:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

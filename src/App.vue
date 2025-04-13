@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AddTaskForm from './components/AddTaskForm.vue'
-import TaskList from './components/TaskList.vue'
+import AddTaskForm from './components/form/AddTaskForm.vue'
+import TaskList from './components/task/TaskList.vue'
 </script>
 
 <template>
