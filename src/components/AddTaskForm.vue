@@ -1,22 +1,22 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="add-task-form">
-    <div class="input-group">
+  <form @submit.prevent="handleSubmit" class="w-full mb-4 md:max-w-[600px] md:mx-auto">
+    <div class="flex gap-2 w-full">
       <InputText
         v-model="newTaskTitle"
         placeholder="Add a new task..."
-        class="task-input"
+        class="flex-1 min-w-0 text-base p-3"
         :class="{ 'p-invalid': showError }"
         @keydown.enter.prevent="handleSubmit"
       />
       <Button
         type="submit"
         icon="pi pi-plus"
-        class="add-button"
+        class="min-w-[48px] min-h-[48px] p-3"
         :disabled="!isValid"
         aria-label="Add task"
       />
     </div>
-    <small v-if="showError" class="error-message">Task title cannot be empty</small>
+    <small v-if="showError" class="text-red-500 block mt-2">Task title cannot be empty</small>
   </form>
 </template>
 
@@ -47,45 +47,5 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
-.add-task-form {
-  width: 100%;
-  margin-bottom: 1rem;
-}
 
-.input-group {
-  display: flex;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.task-input {
-  flex: 1;
-  min-width: 0; /* Prevents input from overflowing */
-  font-size: 1rem;
-  padding: 0.75rem;
-}
-
-.add-button {
-  min-width: 48px;
-  min-height: 48px;
-  padding: 0.75rem;
-}
-
-.error-message {
-  color: var(--red-500);
-  display: block;
-  margin-top: 0.5rem;
-}
-
-/* Desktop styles */
-@media (min-width: 768px) {
-  .add-task-form {
-    max-width: 600px;
-    margin: 0 auto 1rem;
-  }
-
-  .add-button:hover {
-    background-color: var(--primary-600);
-  }
-}
 </style> 
