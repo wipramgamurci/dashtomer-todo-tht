@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AddTaskForm from './components/AddTaskForm.vue'
+import TaskItem from './components/TaskItem.vue'
 import { useTaskStore } from '@/stores/taskStore'
 
 const taskStore = useTaskStore()
@@ -12,20 +13,23 @@ const taskStore = useTaskStore()
     <!-- Add Task Form -->
     <AddTaskForm class="mb-8" />
     
-    <!-- Tasks List (to be implemented) -->
+    <!-- Tasks List -->
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-lg font-semibold mb-4">Tasks</h2>
       <div v-if="taskStore.tasks.length === 0" class="text-gray-500 text-center py-4">
         No tasks yet. Add your first task!
       </div>
-      <div v-else>
-        <!-- TaskList component will go here -->
-        <pre class="text-sm">{{ taskStore.tasks }}</pre>
+      <div v-else class="space-y-2">
+        <TaskItem
+          v-for="task in taskStore.tasks"
+          :key="task.id"
+          :task="task"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <style>
-/* Global styles can go here if needed */
+/* No custom styles needed - using Tailwind */
 </style>
