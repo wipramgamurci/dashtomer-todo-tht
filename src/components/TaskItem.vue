@@ -24,7 +24,7 @@
       <Button
         icon="pi pi-pencil"
         class="p-button-text p-button-rounded min-w-[48px] min-h-[48px] p-3"
-        @click="handleEdit"
+        @click="editDialogRef?.open()"
         aria-label="Edit task"
       />
       <Button
@@ -40,6 +40,13 @@
       :taskId="task.id"
       @confirm="handleDelete"
     />
+
+    <EditDialog
+      ref="editDialogRef"
+      :taskId="task.id"
+      :currentTitle="task.title"
+      @save="handleEdit"
+    />
   </div>
 </template>
 
@@ -49,6 +56,7 @@ import { useTaskStore } from '@/stores/taskStore'
 import Checkbox from 'primevue/checkbox'
 import Button from 'primevue/button'
 import DeleteDialog from './DeleteDialog.vue'
+import EditDialog from './EditDialog.vue'
 
 const props = defineProps<{
   task: {
@@ -61,14 +69,14 @@ const props = defineProps<{
 
 const taskStore = useTaskStore()
 const deleteDialogRef = ref<InstanceType<typeof DeleteDialog> | null>(null)
+const editDialogRef = ref<InstanceType<typeof EditDialog> | null>(null)
 
 const handleToggle = () => {
   taskStore.toggleTask(props.task.id)
 }
 
-const handleEdit = () => {
-  // Will be implemented with EditDialog
-  console.log('Edit task:', props.task.id)
+const handleEdit = (taskId: string, newTitle: string) => {
+  taskStore.editTask(taskId, newTitle)
 }
 
 const handleDelete = (taskId: string) => {
