@@ -12,7 +12,7 @@ A mobile-first todo application built with Vue 3, PrimeVue, and TypeScript.
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone git@github.com:wipramgamurci/dashtomer-todo-tht.git
 cd dashtomer-todo-tht
 ```
 
