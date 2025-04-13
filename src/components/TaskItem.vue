@@ -30,18 +30,25 @@
       <Button
         icon="pi pi-trash"
         class="p-button-text p-button-rounded min-w-[48px] min-h-[48px] p-3"
-        @click="handleDelete"
+        @click="deleteDialogRef?.open()"
         aria-label="Delete task"
       />
     </div>
+
+    <DeleteDialog
+      ref="deleteDialogRef"
+      :taskId="task.id"
+      @confirm="handleDelete"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, ref } from 'vue'
 import { useTaskStore } from '@/stores/taskStore'
 import Checkbox from 'primevue/checkbox'
 import Button from 'primevue/button'
+import DeleteDialog from './DeleteDialog.vue'
 
 const props = defineProps<{
   task: {
@@ -53,6 +60,7 @@ const props = defineProps<{
 }>()
 
 const taskStore = useTaskStore()
+const deleteDialogRef = ref<InstanceType<typeof DeleteDialog> | null>(null)
 
 const handleToggle = () => {
   taskStore.toggleTask(props.task.id)
@@ -63,9 +71,8 @@ const handleEdit = () => {
   console.log('Edit task:', props.task.id)
 }
 
-const handleDelete = () => {
-  // Will be implemented with DeleteDialog
-  console.log('Delete task:', props.task.id)
+const handleDelete = (taskId: string) => {
+  taskStore.deleteTask(taskId)
 }
 </script>
 
