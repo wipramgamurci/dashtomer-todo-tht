@@ -5,28 +5,33 @@ A mobile-first todo application built with Vue 3, PrimeVue, and TypeScript.
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - npm (v7 or higher)
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone git@github.com:wipramgamurci/dashtomer-todo-tht.git
 cd dashtomer-todo-tht
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
 
 4. Build for production:
+
 ```bash
 npm run build
 ```
